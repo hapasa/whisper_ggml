@@ -37,6 +37,8 @@ _OpenAI Whisper ASR (Automatic Speech Recognition) for Flutter using [Whisper.cp
 
 - Utilizes [CORE ML](https://github.com/ggml-org/whisper.cpp/tree/master?tab=readme-ov-file#core-ml-support) for enhanced processing on iOS devices.
 
+- Accepts already prepared Whisper-compatible WAV input directly without bundling FFmpeg.
+
 
 
 ## Installation
@@ -83,21 +85,24 @@ final model = WhisperModel.tiny;
 3. Declare `WhisperController` and use it for transcription:
 
 ```dart
-final controller = WhisperController();
+Future<TranscribeResult?> transcribeFile(String audioPath) async {
+  final controller = WhisperController();
 
-final result = await controller.transcribe(
-    model: model, /// Selected WhisperModel
-    audioPath: audioPath, /// Path to .wav file
-    lang: 'en', /// Language to transcribe
-);
+  return controller.transcribe(
+    model: model, // Selected WhisperModel
+    audioPath: audioPath, // Path to a 16 kHz 16-bit WAV file
+    lang: 'en', // Language to transcribe
+  );
+}
 ```
 
 4. Use the `result` variable to access the transcription result:
 
 ```dart
-if (result?.transcription.text != null) {
-    /// Do something with the transcription
+void handleResult(TranscribeResult? result) {
+  if (result?.transcription.text != null) {
     print(result!.transcription.text);
+  }
 }
 ```
 
@@ -105,6 +110,8 @@ if (result?.transcription.text != null) {
 
 ## Notes
 
-
-
 Transcription processing time is about `5x` times faster when running in release mode.
+
+- `audioPath` must already point to a Whisper-compatible WAV file.
+- The package no longer converts compressed formats such as `.m4a`, `.mp3`, or `.aac` internally.
+- For best results, record or convert audio to `16 kHz`, `16-bit`, mono WAV before calling `transcribe`.

@@ -161,8 +161,14 @@ class _MyHomePageState extends State<MyHomePage> {
         });
 
         final Directory appDirectory = await getTemporaryDirectory();
-        await audioRecorder.start(const RecordConfig(),
-            path: '${appDirectory.path}/test.m4a');
+        await audioRecorder.start(
+          const RecordConfig(
+            encoder: AudioEncoder.wav,
+            sampleRate: 16000,
+            numChannels: 1,
+          ),
+          path: '${appDirectory.path}/test.wav',
+        );
       }
     }
   }

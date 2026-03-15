@@ -5,18 +5,15 @@ import 'dart:isolate';
 import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
 import 'package:universal_io/io.dart';
+import 'package:whisper_ggml/src/models/requests/transcribe_request.dart';
+import 'package:whisper_ggml/src/models/requests/transcribe_request_dto.dart';
+import 'package:whisper_ggml/src/models/requests/version_request.dart';
+import 'package:whisper_ggml/src/models/responses/whisper_transcribe_response.dart';
+import 'package:whisper_ggml/src/models/responses/whisper_version_response.dart';
+import 'package:whisper_ggml/src/models/whisper_dto.dart';
 import 'package:whisper_ggml/src/models/whisper_model.dart';
-import 'package:whisper_ggml/src/whisper_audio_convert.dart';
-
-import 'models/requests/transcribe_request.dart';
-import 'models/requests/transcribe_request_dto.dart';
-import 'models/requests/version_request.dart';
-import 'models/responses/whisper_transcribe_response.dart';
-import 'models/responses/whisper_version_response.dart';
-import 'models/whisper_dto.dart';
 
 export 'models/_models.dart';
-export 'whisper_audio_convert.dart';
 
 /// Native request type
 typedef WReqNative = Pointer<Utf8> Function(Pointer<Utf8> body);
@@ -46,14 +43,12 @@ class Whisper {
     required WhisperRequestDto whisperRequest,
   }) async {
     return Isolate.run(() async {
-      final Pointer<Utf8> data =
-          whisperRequest.toRequestString().toNativeUtf8();
-      final Pointer<Utf8> res = _openLib()
+      final data = whisperRequest.toRequestString().toNativeUtf8();
+      final res = _openLib()
           .lookupFunction<WReqNative, WReqNative>('request')
           .call(data);
 
-      final Map<String, dynamic> result =
-          json.decode(res.toDartString()) as Map<String, dynamic>;
+      final result = json.decode(res.toDartString()) as Map<String, dynamic>;
 
       malloc.free(data);
       return result;
@@ -66,20 +61,36 @@ class Whisper {
     required String modelPath,
   }) async {
     try {
-      final WhisperAudioConvert converter = WhisperAudioConvert(
-        audioInput: File(transcribeRequest.audio),
-        audioOutput: File('${transcribeRequest.audio}.wav'),
-      );
+      final audioPath = transcribeRequest.audio.trim();
+      if (audioPath.isEmpty) {
+        throw ArgumentError.value(
+          transcribeRequest.audio,
+          'transcribeRequest.audio',
+          'Audio path must not be empty.',
+        );
+      }
 
-      final File? convertedFile = await converter.convert();
+      final audioFile = File(audioPath);
+      if (!audioFile.existsSync()) {
+        throw ArgumentError.value(
+          audioPath,
+          'transcribeRequest.audio',
+          'Audio file does not exist.',
+        );
+      }
 
-      final TranscribeRequest req = transcribeRequest.copyWith(
-        audio: convertedFile?.path ?? transcribeRequest.audio,
-      );
+      final lowerCaseAudioPath = audioPath.toLowerCase();
+      if (audioPath.contains('.') && !lowerCaseAudioPath.endsWith('.wav')) {
+        throw ArgumentError.value(
+          audioPath,
+          'transcribeRequest.audio',
+          'Whisper expects an already converted 16 kHz 16-bit WAV file.',
+        );
+      }
 
-      final Map<String, dynamic> result = await _request(
+      final result = await _request(
         whisperRequest: TranscribeRequestDto.fromTranscribeRequest(
-          req,
+          transcribeRequest.copyWith(audio: audioPath),
           modelPath,
         ),
       );
@@ -96,13 +107,11 @@ class Whisper {
 
   /// Get whisper version
   Future<String?> getVersion() async {
-    final Map<String, dynamic> result = await _request(
+    final result = await _request(
       whisperRequest: const VersionRequest(),
     );
 
-    final WhisperVersionResponse response = WhisperVersionResponse.fromJson(
-      result,
-    );
+    final response = WhisperVersionResponse.fromJson(result);
     return response.message;
   }
 }

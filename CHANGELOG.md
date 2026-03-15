@@ -1,3 +1,10 @@
+## Unreleased
+
+* Removed the `ffmpeg_kit_flutter_new_min` dependency.
+* `Whisper.transcribe` now expects an already prepared WAV file instead of converting audio internally.
+* Removed the public `WhisperAudioConvert` helper export.
+* Updated the example and docs to record/transcribe `16 kHz` WAV input directly.
+
 ## 1.7.0
 
 * Connected `diarize` transcribe parameter to the underlying whisper C++ code
