@@ -69,20 +69,84 @@ class WhisperController {
   }
 
   /// Download [model] to [destinationPath]
-  Future<String> downloadModel(WhisperModel model) async {
-    if (!File(await getPath(model)).existsSync()) {
-      final request = await HttpClient().getUrl(model.modelUri);
+  Future<String> downloadModel(
+    WhisperModel model, {
+    void Function(int percent)? onProgress,
+  }) async {
+    final String modelPath = await getPath(model);
+    if (File(modelPath).existsSync()) {
+      return modelPath;
+    }
 
-      final response = await request.close();
+    final String temporaryPath = '$modelPath.download';
+    final HttpClient client = HttpClient();
+    IOSink? sink;
 
-      final bytes = await consolidateHttpClientResponseBytes(response);
+    try {
+      final HttpClientRequest request = await client.getUrl(model.modelUri);
+      final HttpClientResponse response = await request.close();
 
-      final File file = File(await getPath(model));
-      await file.writeAsBytes(bytes);
+      if (response.statusCode != HttpStatus.ok) {
+        throw HttpException(
+          'Failed to download model ${model.modelName}: '
+          'HTTP ${response.statusCode}',
+          uri: model.modelUri,
+        );
+      }
 
-      return file.path;
-    } else {
-      return await getPath(model);
+      final File temporaryFile = File(temporaryPath);
+      if (temporaryFile.existsSync()) {
+        await temporaryFile.delete();
+      }
+
+      sink = temporaryFile.openWrite();
+
+      final int contentLength = response.contentLength;
+      int bytesReceived = 0;
+      int lastReportedPercent = 0;
+
+      await for (final List<int> chunk in response) {
+        sink.add(chunk);
+        bytesReceived += chunk.length;
+
+        if (contentLength > 0) {
+          final int percent = ((bytesReceived * 100) / contentLength).floor();
+          while (lastReportedPercent + 10 <= percent &&
+              lastReportedPercent < 100) {
+            lastReportedPercent += 10;
+            onProgress?.call(lastReportedPercent);
+          }
+        }
+      }
+
+      await sink.flush();
+      await sink.close();
+      sink = null;
+
+      final File destinationFile = File(modelPath);
+      if (destinationFile.existsSync()) {
+        await destinationFile.delete();
+      }
+
+      await temporaryFile.rename(modelPath);
+
+      if (contentLength > 0 && lastReportedPercent < 100) {
+        onProgress?.call(100);
+      }
+
+      return modelPath;
+    } catch (_) {
+      if (sink != null) {
+        await sink.close();
+      }
+
+      final File temporaryFile = File(temporaryPath);
+      if (temporaryFile.existsSync()) {
+        await temporaryFile.delete();
+      }
+      rethrow;
+    } finally {
+      client.close(force: true);
     }
   }
 }
