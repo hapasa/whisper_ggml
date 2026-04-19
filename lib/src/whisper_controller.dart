@@ -20,6 +20,7 @@ class WhisperController {
     required String audioPath,
     String lang = 'en',
     bool diarize = false,
+    String? initialPrompt,
   }) async {
     await initModel(model);
 
@@ -33,6 +34,7 @@ class WhisperController {
       final WhisperTranscribeResponse transcription = await whisper.transcribe(
         transcribeRequest: TranscribeRequest(
           audio: audioPath,
+          initialPrompt: initialPrompt,
           language: lang,
           isTranslate: translate,
           isNoTimestamps: !withSegments,

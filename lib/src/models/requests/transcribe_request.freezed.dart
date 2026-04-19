@@ -15,6 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TranscribeRequest {
   String get audio;
+  String? get initialPrompt;
   bool get isTranslate;
   int get threads;
   bool get isVerbose;
@@ -43,6 +44,8 @@ mixin _$TranscribeRequest {
         (other.runtimeType == runtimeType &&
             other is TranscribeRequest &&
             (identical(other.audio, audio) || other.audio == audio) &&
+            (identical(other.initialPrompt, initialPrompt) ||
+                other.initialPrompt == initialPrompt) &&
             (identical(other.isTranslate, isTranslate) ||
                 other.isTranslate == isTranslate) &&
             (identical(other.threads, threads) || other.threads == threads) &&
@@ -72,6 +75,7 @@ mixin _$TranscribeRequest {
   int get hashCode => Object.hash(
       runtimeType,
       audio,
+      initialPrompt,
       isTranslate,
       threads,
       isVerbose,
@@ -88,7 +92,7 @@ mixin _$TranscribeRequest {
 
   @override
   String toString() {
-    return 'TranscribeRequest(audio: $audio, isTranslate: $isTranslate, threads: $threads, isVerbose: $isVerbose, language: $language, isSpecialTokens: $isSpecialTokens, isNoTimestamps: $isNoTimestamps, isRealtime: $isRealtime, nProcessors: $nProcessors, splitOnWord: $splitOnWord, noFallback: $noFallback, diarize: $diarize, speedUp: $speedUp, realtimeStream: $realtimeStream)';
+    return 'TranscribeRequest(audio: $audio, initialPrompt: $initialPrompt, isTranslate: $isTranslate, threads: $threads, isVerbose: $isVerbose, language: $language, isSpecialTokens: $isSpecialTokens, isNoTimestamps: $isNoTimestamps, isRealtime: $isRealtime, nProcessors: $nProcessors, splitOnWord: $splitOnWord, noFallback: $noFallback, diarize: $diarize, speedUp: $speedUp, realtimeStream: $realtimeStream)';
   }
 }
 
@@ -100,6 +104,7 @@ abstract mixin class $TranscribeRequestCopyWith<$Res> {
   @useResult
   $Res call(
       {String audio,
+      String? initialPrompt,
       bool isTranslate,
       int threads,
       bool isVerbose,
@@ -129,6 +134,7 @@ class _$TranscribeRequestCopyWithImpl<$Res>
   @override
   $Res call({
     Object? audio = null,
+    Object? initialPrompt = freezed,
     Object? isTranslate = null,
     Object? threads = null,
     Object? isVerbose = null,
@@ -148,6 +154,10 @@ class _$TranscribeRequestCopyWithImpl<$Res>
           ? _self.audio
           : audio // ignore: cast_nullable_to_non_nullable
               as String,
+      initialPrompt: freezed == initialPrompt
+          ? _self.initialPrompt
+          : initialPrompt // ignore: cast_nullable_to_non_nullable
+              as String?,
       isTranslate: null == isTranslate
           ? _self.isTranslate
           : isTranslate // ignore: cast_nullable_to_non_nullable
@@ -299,6 +309,7 @@ extension TranscribeRequestPatterns on TranscribeRequest {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             String audio,
+            String? initialPrompt,
             bool isTranslate,
             int threads,
             bool isVerbose,
@@ -320,6 +331,7 @@ extension TranscribeRequestPatterns on TranscribeRequest {
       case _TranscribeRequest() when $default != null:
         return $default(
             _that.audio,
+            _that.initialPrompt,
             _that.isTranslate,
             _that.threads,
             _that.isVerbose,
@@ -355,6 +367,7 @@ extension TranscribeRequestPatterns on TranscribeRequest {
   TResult when<TResult extends Object?>(
     TResult Function(
             String audio,
+            String? initialPrompt,
             bool isTranslate,
             int threads,
             bool isVerbose,
@@ -375,6 +388,7 @@ extension TranscribeRequestPatterns on TranscribeRequest {
       case _TranscribeRequest():
         return $default(
             _that.audio,
+            _that.initialPrompt,
             _that.isTranslate,
             _that.threads,
             _that.isVerbose,
@@ -409,6 +423,7 @@ extension TranscribeRequestPatterns on TranscribeRequest {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             String audio,
+            String? initialPrompt,
             bool isTranslate,
             int threads,
             bool isVerbose,
@@ -429,6 +444,7 @@ extension TranscribeRequestPatterns on TranscribeRequest {
       case _TranscribeRequest() when $default != null:
         return $default(
             _that.audio,
+            _that.initialPrompt,
             _that.isTranslate,
             _that.threads,
             _that.isVerbose,
@@ -453,6 +469,7 @@ extension TranscribeRequestPatterns on TranscribeRequest {
 class _TranscribeRequest extends TranscribeRequest {
   const _TranscribeRequest(
       {required this.audio,
+      this.initialPrompt,
       this.isTranslate = false,
       this.threads = 6,
       this.isVerbose = false,
@@ -470,6 +487,8 @@ class _TranscribeRequest extends TranscribeRequest {
 
   @override
   final String audio;
+  @override
+  final String? initialPrompt;
   @override
   @JsonKey()
   final bool isTranslate;
@@ -524,6 +543,8 @@ class _TranscribeRequest extends TranscribeRequest {
         (other.runtimeType == runtimeType &&
             other is _TranscribeRequest &&
             (identical(other.audio, audio) || other.audio == audio) &&
+            (identical(other.initialPrompt, initialPrompt) ||
+                other.initialPrompt == initialPrompt) &&
             (identical(other.isTranslate, isTranslate) ||
                 other.isTranslate == isTranslate) &&
             (identical(other.threads, threads) || other.threads == threads) &&
@@ -553,6 +574,7 @@ class _TranscribeRequest extends TranscribeRequest {
   int get hashCode => Object.hash(
       runtimeType,
       audio,
+      initialPrompt,
       isTranslate,
       threads,
       isVerbose,
@@ -569,7 +591,7 @@ class _TranscribeRequest extends TranscribeRequest {
 
   @override
   String toString() {
-    return 'TranscribeRequest(audio: $audio, isTranslate: $isTranslate, threads: $threads, isVerbose: $isVerbose, language: $language, isSpecialTokens: $isSpecialTokens, isNoTimestamps: $isNoTimestamps, isRealtime: $isRealtime, nProcessors: $nProcessors, splitOnWord: $splitOnWord, noFallback: $noFallback, diarize: $diarize, speedUp: $speedUp, realtimeStream: $realtimeStream)';
+    return 'TranscribeRequest(audio: $audio, initialPrompt: $initialPrompt, isTranslate: $isTranslate, threads: $threads, isVerbose: $isVerbose, language: $language, isSpecialTokens: $isSpecialTokens, isNoTimestamps: $isNoTimestamps, isRealtime: $isRealtime, nProcessors: $nProcessors, splitOnWord: $splitOnWord, noFallback: $noFallback, diarize: $diarize, speedUp: $speedUp, realtimeStream: $realtimeStream)';
   }
 }
 
@@ -583,6 +605,7 @@ abstract mixin class _$TranscribeRequestCopyWith<$Res>
   @useResult
   $Res call(
       {String audio,
+      String? initialPrompt,
       bool isTranslate,
       int threads,
       bool isVerbose,
@@ -612,6 +635,7 @@ class __$TranscribeRequestCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? audio = null,
+    Object? initialPrompt = freezed,
     Object? isTranslate = null,
     Object? threads = null,
     Object? isVerbose = null,
@@ -631,6 +655,10 @@ class __$TranscribeRequestCopyWithImpl<$Res>
           ? _self.audio
           : audio // ignore: cast_nullable_to_non_nullable
               as String,
+      initialPrompt: freezed == initialPrompt
+          ? _self.initialPrompt
+          : initialPrompt // ignore: cast_nullable_to_non_nullable
+              as String?,
       isTranslate: null == isTranslate
           ? _self.isTranslate
           : isTranslate // ignore: cast_nullable_to_non_nullable

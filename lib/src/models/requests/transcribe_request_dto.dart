@@ -30,6 +30,7 @@ abstract class TranscribeRequestDto
     @JsonKey(name: 'is_realtime') required bool isRealtime,
     required bool diarize,
     @JsonKey(name: 'speed_up') required bool speedUp,
+    @JsonKey(name: 'initial_prompt') String? initialPrompt,
   }) = _TranscribeRequestDto;
 
   /// Convert [request] to TranscribeRequestDto with specified [modelPath]
@@ -40,6 +41,7 @@ abstract class TranscribeRequestDto
     return TranscribeRequestDto(
       audio: request.audio,
       model: modelPath,
+      initialPrompt: request.initialPrompt,
       isTranslate: request.isTranslate,
       threads: request.threads,
       isVerbose: request.isVerbose,

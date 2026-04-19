@@ -7,6 +7,7 @@ part 'transcribe_request.freezed.dart';
 abstract class TranscribeRequest with _$TranscribeRequest {
   const factory TranscribeRequest({
     required String audio,
+    String? initialPrompt,
     @Default(false) bool isTranslate,
     @Default(6) int threads,
     @Default(false) bool isVerbose,

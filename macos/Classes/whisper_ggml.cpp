@@ -160,6 +160,10 @@ json transcribe(json jsonBody)
     params.audio = jsonBody["audio"];
     params.split_on_word = jsonBody["split_on_word"];
     params.diarize = jsonBody["diarize"];
+    if (jsonBody.contains("initial_prompt") && jsonBody["initial_prompt"].is_string())
+    {
+        params.prompt = jsonBody["initial_prompt"].get<std::string>();
+    }
     json jsonResult;
     jsonResult["@type"] = "transcribe";
 
@@ -274,6 +278,10 @@ json transcribe(json jsonBody)
         wparams.language = params.language.c_str();
         wparams.n_threads = params.n_threads;
         wparams.split_on_word = params.split_on_word;
+        if (!params.prompt.empty())
+        {
+            wparams.initial_prompt = params.prompt.c_str();
+        }
 
         if (params.split_on_word) {
             wparams.max_len = 1;
