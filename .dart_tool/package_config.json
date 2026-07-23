@@ -3,13 +3,13 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-93.0.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-96.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/analyzer-10.0.1",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/analyzer-10.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -21,7 +21,7 @@
     },
     {
       "name": "async",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/async-2.13.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/async-2.13.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -33,27 +33,27 @@
     },
     {
       "name": "build",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build-4.0.4",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build-4.0.7",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.8"
     },
     {
       "name": "build_config",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build_config-1.3.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build_config-1.3.1",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.8"
     },
     {
       "name": "build_daemon",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build_daemon-4.1.1",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build_daemon-4.1.2",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.8"
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build_runner-2.12.2",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/build_runner-2.15.1",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.8"
     },
     {
       "name": "built_collection",
@@ -63,7 +63,7 @@
     },
     {
       "name": "built_value",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/built_value-8.12.4",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/built_value-8.12.6",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -87,15 +87,9 @@
     },
     {
       "name": "code_assets",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/code_assets-1.0.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/code_assets-1.2.1",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
-    },
-    {
-      "name": "code_builder",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/code_builder-4.11.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.10"
     },
     {
       "name": "collection",
@@ -129,9 +123,9 @@
     },
     {
       "name": "ffigen",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/ffigen-18.1.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/ffigen-20.1.1",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.8"
     },
     {
       "name": "file",
@@ -149,7 +143,7 @@
       "name": "flutter",
       "rootUri": "file:///home/harri/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.10"
     },
     {
       "name": "flutter_riverpod",
@@ -183,7 +177,7 @@
     },
     {
       "name": "hooks",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/hooks-1.0.2",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/hooks-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
@@ -206,14 +200,26 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "jni",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/jni-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "jni_flutter",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/jni_flutter-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "json_annotation",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/json_annotation-4.11.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/json_annotation-4.12.0",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "json_serializable",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/json_serializable-6.13.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/json_serializable-6.14.0",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -225,9 +231,9 @@
     },
     {
       "name": "matcher",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/matcher-0.12.19",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/matcher-0.12.20",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.10"
     },
     {
       "name": "material_color_utilities",
@@ -237,7 +243,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/meta-1.17.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/meta-1.18.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -248,14 +254,8 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "native_toolchain_c",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/native_toolchain_c-0.17.5",
-      "packageUri": "lib/",
-      "languageVersion": "3.10"
-    },
-    {
       "name": "objective_c",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/objective_c-9.3.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/objective_c-9.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
@@ -273,13 +273,13 @@
     },
     {
       "name": "path_provider",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider-2.1.5",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider-2.1.6",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.10"
     },
     {
       "name": "path_provider_android",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider_android-2.3.1",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -291,15 +291,15 @@
     },
     {
       "name": "path_provider_linux",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.10"
     },
     {
       "name": "path_provider_platform_interface",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.2",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.3",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.10"
     },
     {
       "name": "path_provider_windows",
@@ -344,6 +344,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "record_use",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/record_use-0.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
       "name": "riverpod",
       "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/riverpod-2.6.1",
       "packageUri": "lib/",
@@ -365,17 +371,17 @@
       "name": "sky_engine",
       "rootUri": "file:///home/harri/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.10"
     },
     {
       "name": "source_gen",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/source_gen-4.2.1",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/source_gen-4.2.3",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "source_helper",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/source_helper-1.3.10",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/source_helper-1.3.12",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -423,9 +429,9 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/test_api-0.7.10",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/test_api-0.7.13",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.11"
     },
     {
       "name": "typed_data",
@@ -447,9 +453,9 @@
     },
     {
       "name": "very_good_analysis",
-      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/very_good_analysis-7.0.0",
+      "rootUri": "file:///home/harri/.pub-cache/hosted/pub.dev/very_good_analysis-10.3.0",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.12"
     },
     {
       "name": "watcher",
@@ -501,8 +507,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.11.5",
+  "generatorVersion": "3.12.2",
   "flutterRoot": "file:///home/harri/flutter",
-  "flutterVersion": "3.41.7",
+  "flutterVersion": "3.44.7",
   "pubCache": "file:///home/harri/.pub-cache"
 }
