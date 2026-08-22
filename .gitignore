@@ -1,0 +1,40 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.fvm/
+.fvmrc
+.history/
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+coverage/
+generated_plugin_registrant.*
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Lockfiles (this is a library package; lockfiles are not committed)
+pubspec.lock
+
+# Android Studio / IntelliJ related
+*.iml
+.idea/
+
+# Flutter version related
+.flutter-version
